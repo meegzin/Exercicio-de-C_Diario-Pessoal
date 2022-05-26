@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-void criarSenha(char senhaCadastrada[]){
+void criarSenha(char senhaCadastrada[]){  //verifica se a senha tem pelo menos 8 caracteres
     int tam = 0, i = 0;
     while (senhaCadastrada[i] != NULL){
         tam ++;
         i++;
     }
     if (tam <7){
-        printf("\nSua senha possui menos de 8 dígitos. Por favor, tente outra: ");
+        printf("\nSua senha possui menos de 8 digitos. Por favor, tente outra: ");
         printf("\nDigite a senha: ");
         scanf("%s", senhaCadastrada);
         criarSenha(senhaCadastrada); //Recursividade
@@ -18,7 +18,7 @@ void criarSenha(char senhaCadastrada[]){
     }
 }
 
-int validarAcesso(char senhaDeAcesso[], char senhaCadastrada[]){
+int validarAcesso(char senhaDeAcesso[], char senhaCadastrada[]){ //faz a comparação das senhas para liberar o acesso
     if(strcmp(senhaCadastrada, senhaDeAcesso) == 0){
         return 1;
     } else {
@@ -48,17 +48,16 @@ void main(){
     switch (escolha) {
         case 1:
 
-            printf("\ncrie a sua senha: ");
+            printf("\ncrie a sua senha (A senha deve ter 8 digitos): ");
             scanf("%s", senhaCadastrada); //Esse modo de ler strings não permite espaços
             criarSenha(senhaCadastrada); //Função recursiva que valida a senha
             //Pode gravar no arquivo a senha
-            printf("\n\n");
             goto menu1; //voltar de novo para o menu para poder entrar com a senha de acesso
             break;
 
         case 2:
 
-            printf("\nSem problemas. crie a sua senha: ");
+            printf("\nSem problemas! Crie a sua nova senha: ");
             scanf("%s", senhaCadastrada);  //Basicamente, vai setar uma nova senha
             criarSenha(senhaCadastrada);
             goto menu1; //voltar de novo para o menu para poder entrar com a senha de acesso
@@ -67,10 +66,12 @@ void main(){
         case 3:
             verificar: //checkpoint
 
-            printf("\nDigite a sua senha: ");
+            printf("\nDigite a sua senha (Para voltar para o menu principal, digite 1): ");
             scanf("%s", senhaDeAcesso);
             validarAcesso(senhaDeAcesso, senhaCadastrada);
-
+            if (senhaDeAcesso[0] == '1' && senhaDeAcesso[1] == NULL){ //Caso o usuario queira redefinir a senha
+                goto menu1;
+            }
             if (validarAcesso(senhaDeAcesso, senhaCadastrada) == 0){
                 printf("Senha invalida");
                 goto verificar;
