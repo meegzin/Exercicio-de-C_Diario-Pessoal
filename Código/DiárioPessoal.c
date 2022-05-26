@@ -3,7 +3,6 @@
 #include <string.h>
 
 void criarSenha(char senhaCadastrada[]){
-
     int tam = 0, i = 0;
     while (senhaCadastrada[i] != NULL){
         tam ++;
@@ -17,30 +16,26 @@ void criarSenha(char senhaCadastrada[]){
     }else {
         printf("\nSenha cadastrada com sucesso!\n");
     }
-
 }
 
-int validarSenha (char senhaDeAcesso[], char senhaCadastrada[]){
-
-    if(strcomp(senhaDeAcesso,senhaCadastrada)){
-        printf("Acesso Liberado! ");
+int validarAcesso(char senhaDeAcesso[], char senhaCadastrada[]){
+    if(strcmp(senhaCadastrada, senhaDeAcesso) == 0){
         return 1;
     } else {
         return 0;
     }
 }
 
-
 void main(){
-
+    //Criação e Validação da senha
     //Menu de Login
     int escolha;
     char senhaCadastrada[50], senhaDeAcesso[50];
+    printf("\nBem vindo do Diario Pessoal Digital");
 
     menu1: //checkpoint
     do{
-    printf("Bem vindo do Diario Pessoal Digital");
-    printf("\n Antes de iniciarmos, escolha uma das opcoes abaixo: ");
+    printf("\n Escolha uma das opcoes abaixo: ");
     printf("\n Para criar uma senha, digite 1 |");
     printf("\n Caso tenha esquecido a senha, digite 2 | ");
     printf("\n Para entrar com uma Senha, digite 3 | ");
@@ -66,6 +61,7 @@ void main(){
             printf("\nSem problemas. crie a sua senha: ");
             scanf("%s", senhaCadastrada);  //Basicamente, vai setar uma nova senha
             criarSenha(senhaCadastrada);
+            goto menu1; //voltar de novo para o menu para poder entrar com a senha de acesso
             break;
 
         case 3:
@@ -73,17 +69,20 @@ void main(){
 
             printf("\nDigite a sua senha: ");
             scanf("%s", senhaDeAcesso);
-            validarSenha(senhaDeAcesso, senhaCadastrada);
-            printf("O valor retorno: %d",validarSenha(senhaDeAcesso, senhaCadastrada));
-            if (validarSenha(senhaDeAcesso, senhaCadastrada) == 0){
+            validarAcesso(senhaDeAcesso, senhaCadastrada);
+
+            if (validarAcesso(senhaDeAcesso, senhaCadastrada) == 0){
                 printf("Senha invalida");
                 goto verificar;
+            } else {
+                printf("Acesso Liberado! ");
             }
             break;
 
         default:
             printf("Ocorreu um erro! Tente novamente mais tarde");
-            exit;
     }
+
+//Implementação da Lista Encadeada
 
 }
