@@ -10,7 +10,8 @@ Codificar um sistema para gerenciamento de um diário pessoal em C. O sistema de
     Editar senha de acesso.
 
 Os registros correspondem a um tipo de dado abstrato, que deve ser codificado como uma estrutura (struct) em C.
-Cada registro tem as seguintes informações: data, horário, nome, local, duração e observação. 
+Cada registro tem as seguintes informações: 
+    data, horário, nome, local, duração e observação. 
 Implementar um menu principal para navegar no seu sistema e submenus para as funcionalidades.
 Além das funcionalidades essenciais, que são exibidas no menu principal da aplicação, o sistema deve ter uma função para validar a senha de acesso.
 
