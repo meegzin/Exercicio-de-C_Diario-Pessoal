@@ -8,11 +8,12 @@ void criarSenha(char senhaCadastrada[]){  //verifica se a senha tem pelo menos 8
         tam ++;
         i++;
     }
-    if (tam <7){
+    if (tam <=7){
+        char tentarDenovo[50];
         printf("\nSua senha possui menos de 8 digitos. Por favor, tente outra: ");
         printf("\nDigite a senha: ");
-        scanf("%s", senhaCadastrada);
-        criarSenha(senhaCadastrada); //Recursividade
+        scanf("%s", &tentarDenovo);
+        criarSenha(tentarDenovo); //Recursividade
     }else {
         printf("\nSenha cadastrada com sucesso!\n");
     }
@@ -49,7 +50,7 @@ void main(){
         case 1:
 
             printf("\ncrie a sua senha (A senha deve ter 8 digitos): ");
-            scanf("%s", senhaCadastrada); //Esse modo de ler strings não permite espaços
+            scanf("%s", &senhaCadastrada); //Esse modo de ler strings não permite espaços
             criarSenha(senhaCadastrada); //Função recursiva que valida a senha
             //Pode gravar no arquivo a senha
             goto menu1; //voltar de novo para o menu para poder entrar com a senha de acesso
@@ -58,7 +59,7 @@ void main(){
         case 2:
 
             printf("\nSem problemas! Crie a sua nova senha: ");
-            scanf("%s", senhaCadastrada);  //Basicamente, vai setar uma nova senha
+            scanf("%s", &senhaCadastrada);  //Basicamente, vai setar uma nova senha
             criarSenha(senhaCadastrada);
             goto menu1; //voltar de novo para o menu para poder entrar com a senha de acesso
             break;
@@ -67,7 +68,7 @@ void main(){
             verificar: //checkpoint
 
             printf("\nDigite a sua senha (Para voltar para o menu principal, digite 1): ");
-            scanf("%s", senhaDeAcesso);
+            scanf("%s", &senhaDeAcesso);
             validarAcesso(senhaDeAcesso, senhaCadastrada);
             if (senhaDeAcesso[0] == '1' && senhaDeAcesso[1] == NULL){ //Caso o usuario queira redefinir a senha
                 goto menu1;
