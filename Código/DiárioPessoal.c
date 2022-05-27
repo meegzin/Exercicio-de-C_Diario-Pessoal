@@ -23,7 +23,7 @@ void criarSenha(char senhaCadastrada[]){  //verifica se a senha tem pelo menos 8
     }else {
         printf("\nSenha cadastrada com sucesso!\n");
         if (validador>0){
-            senhaCadastrada = tentarDeNovo;
+            strcpy(senhaCadastrada, tentarDeNovo);
         }
     }
 }
