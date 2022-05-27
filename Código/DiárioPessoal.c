@@ -5,12 +5,15 @@
 void criarSenha(char senhaCadastrada[]){  //verifica se a senha tem pelo menos 8 caracteres
     int tam = 0, i = 0, validador = 0;
     char tentarDeNovo[50];
-    while (senhaCadastrada[i] != NULL){
+    char *p;
+    p = senhaCadastrada;
+    while (*(p+i) != NULL){
         tam ++;
         i++;
         
     }
     if (tam <=7){
+        printf("\nA sua senha só tem %d caracteres",tam);
         printf("\nSua senha possui menos de 8 digitos. Por favor, tente outra: ");
         printf("\nDigite a senha: ");
         scanf("%s", &tentarDeNovo);
@@ -54,7 +57,7 @@ void main(){
 
     switch (escolha) {
         case 1:
-
+            caso1:
             printf("\ncrie a sua senha (A senha deve ter 8 digitos): ");
             scanf("%s", &senhaCadastrada); //Esse modo de ler strings não permite espaços
             criarSenha(senhaCadastrada); //Função recursiva que valida a senha
@@ -63,13 +66,9 @@ void main(){
             break;
 
         case 2:
-
-            printf("\nSem problemas! Crie a sua nova senha: ");
-            scanf("%s", &senhaCadastrada);  //Basicamente, vai setar uma nova senha
-            criarSenha(senhaCadastrada);
-            goto menu1; //voltar de novo para o menu para poder entrar com a senha de acesso
+            printf("\nSem problemas!");
+            goto caso1;
             break;
-
         case 3:
             verificar: //checkpoint
 
