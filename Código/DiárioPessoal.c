@@ -75,7 +75,9 @@ void main(){
             printf("\nDigite a sua senha (Para voltar para o menu principal, digite 1): ");
             scanf("%s", &senhaDeAcesso);
             validarAcesso(senhaDeAcesso, senhaCadastrada);
-            if (senhaDeAcesso[0] == '1' && senhaDeAcesso[1] == NULL){ //Caso o usuario queira redefinir a senha
+            char *acesso;
+            acesso = senhaDeAcesso;
+            if (*(acesso+0) == '1' && *(acesso+1) == NULL){ //Caso o usuario queira redefinir a senha
                 goto menu1;
             }
             if (validarAcesso(senhaDeAcesso, senhaCadastrada) == 0){
