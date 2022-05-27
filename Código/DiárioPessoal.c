@@ -3,19 +3,25 @@
 #include <string.h>
 
 void criarSenha(char senhaCadastrada[]){  //verifica se a senha tem pelo menos 8 caracteres
-    int tam = 0, i = 0;
+    int tam = 0, i = 0, validador = 0;
+    char tentarDeNovo[50];
     while (senhaCadastrada[i] != NULL){
         tam ++;
         i++;
+        
     }
     if (tam <=7){
-        char tentarDenovo[50];
         printf("\nSua senha possui menos de 8 digitos. Por favor, tente outra: ");
         printf("\nDigite a senha: ");
-        scanf("%s", &tentarDenovo);
-        criarSenha(tentarDenovo); //Recursividade
+        scanf("%s", &tentarDeNovo);
+        criarSenha(tentarDeNovo); //Recursividade
+        validador = 1; //O validador serve para a semântica, para diser se a senha foi criada de primeira ou não
+
     }else {
         printf("\nSenha cadastrada com sucesso!\n");
+        if (validador>0){
+            senhaCadastrada = tentarDeNovo;
+        }
     }
 }
 
